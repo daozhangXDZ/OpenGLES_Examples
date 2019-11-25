@@ -1,4 +1,6 @@
 ﻿#include <examplebase.h>
+#pragma comment(lib, "SDL2.lib")                  
+#pragma comment(lib, "SDL2main.lib")
 
 using namespace es;
 
@@ -33,8 +35,9 @@ public:
 };
 
 Example* example;
-int APIENTRY SDL_main(int args, char **argc)
+int main(int argc, char* argv[])
 {
+	//SDL_Init(SDL_INIT_EVERYTHING);
 	example = new Example();
 	example->setupValidation();
 	if (!example->setupSDL() ||
@@ -48,3 +51,19 @@ int APIENTRY SDL_main(int args, char **argc)
 	delete(example);
 	return EXIT_SUCCESS;
 }
+
+//int APIENTRY SDL_main(int args, char **argc)
+//{
+//	example = new Example();
+//	example->setupValidation();
+//	if (!example->setupSDL() ||
+//		!example->loadGLESFunctions() ||
+//		!example->setupImGui())
+//	{
+//		return 0;
+//	}
+//	example->prepare();
+//	example->renderLoop();
+//	delete(example);
+//	return EXIT_SUCCESS;
+//}
